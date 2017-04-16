@@ -1,0 +1,384 @@
+This homework is due at 1:00 pm on Monday, April 17.
+
+Submit it to the Cyber University.
+
+Your solution must be a single file, named .mult.py
+
+A solution will be posted at 1:10pm, so that you can look at it before the midterm the next day.
+
+Therefore, note that you must turn it in on time.
+
+Note also that it would be a big mistake to not do this assignment, as it is a significant part of your grade.
+
+Note also that you cannot, under any circumstances, copy code from each other. Now, you can (and should) discuss the assigmnent with each other. You can (and should) discuss Python with each other.
+But you can't discuss you assignment solutions with each other. Of course, that means you can't share code or look at other students' code.
+
+Please read the text below, as some parts have been added since the previous posting:
+................................................................
+: Part 1. Basics (this part is unchanged from the earier post) :
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+You will implement a game called multiplication. (If you use emacs, you can find the game in emacs under tools->games->mulyiplication)
+
+The way it works is that it presents the long-form multiplication, such as:
+       A J C
+    x    D F
+    ------------
+     C I H F
+   C E G D
+   ------------
+   A C H D F
+
+The player then tries to guess the values of the letters. In the above example, the player might begin by guessing that h = 0, since this is clearly true by considering that the "D" in "ACHDF" was obtained by H+D. So H is 0.
+
+When the player gets a letter correct, it will replace with its number. For the above example, that would be:
+       A J C
+    x    D F
+    ------------
+     C I 0 F
+   C E G D
+   ------------
+   A C 0 D F
+
+Notice that two Hs became 0s.
+When all letters are solved, the game is won.
+
+A "valid" puzzle meets these criteria:
+- The multiplicand (top line) must be 3 digits (and the top digit isn't 0)
+- The multiplier (second line) must be 2 digits
+- The multiplier digits must each have a value of atleast 2
+- The multiplier digits must be different from each other
+- The two partial products (lines 3&4) must be 4 digits (and with their top digits not being 0)
+
+
+.........................................................
+: Part 2. What my output looks like: (this part is new) :
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+I have modeled my output based on the output of the original multiply game, but with fewer spaces.
+I don't require that you follow my spacing:
+ - My puzzle is indented 2 spaces from the left, 
+   but your's doesn't have to be the same
+   (of course, you can do it the same if you
+   like the look).
+ - My puzzle prints 4 empty lines above it,
+   but your's doesn't have to be the same.
+ - My puzzle doesn't put spaces between the
+   letters (the example in part 1 did have
+   such spaces -- its up to you)
+ - My puzzle puts 10 spaces between the letters
+   and the statitistics (for example, see the 
+   10 spaces after "GEG", below). Your's doesn't
+   have to be the same.
+
+All that being said, I do require some things of your output:
+ - Your multiplication columns should line up
+   like mine do (ie, like long multiplication does).
+ - The three statistics must be on lines 1, 4, & 7,
+   like mine are.
+
+
+So now, let's see my output:
+
+% python3 multgame.py
+
+
+
+
+    GEG          Number of errors (this game): 0
+   x GD
+  -----
+   IFCF          Number of games: 0
+  HIFE
+  -----
+  HCJAF          Average number of errors per game: 0.00
+
+
+Your try? e
+E=9
+Incorrect.
+
+
+
+
+    GEG          Number of errors (this game): 1
+   x GD
+  -----
+   IFCF          Number of games: 0
+  HIFE
+  -----
+  HCJAF          Average number of errors per game: 0.00
+
+
+Your try? e
+E=4
+Incorrect.
+
+
+
+
+    GEG          Number of errors (this game): 2
+   x GD
+  -----
+   IFCF          Number of games: 0
+  HIFE
+  -----
+  HCJAF          Average number of errors per game: 0.00
+
+
+Your try? e
+E=1
+Correct!
+
+
+
+
+    G1G          Number of errors (this game): 2
+   x GD
+  -----
+   IFCF          Number of games: 0
+  HIF1
+  -----
+  HCJAF          Average number of errors per game: 0.00
+
+
+Your try? g
+G=9
+Correct!
+
+
+
+
+    919          Number of errors (this game): 2
+   x 9D
+  -----
+   IFCF          Number of games: 0
+  HIF1
+  -----
+  HCJAF          Average number of errors per game: 0.00
+
+
+Your try? h
+H=8
+Correct!
+
+
+
+
+    919          Number of errors (this game): 2
+   x 9D
+  -----
+   IFCF          Number of games: 0
+  8IF1
+  -----
+  8CJAF          Average number of errors per game: 0.00
+
+
+Your try? f
+F=7
+Correct!
+
+
+
+
+    919          Number of errors (this game): 2
+   x 9D
+  -----
+   I7C7          Number of games: 0
+  8I71
+  -----
+  8CJA7          Average number of errors per game: 0.00
+
+
+Your try? i
+I=2
+Correct!
+
+
+
+
+    919          Number of errors (this game): 2
+   x 9D
+  -----
+   27C7          Number of games: 0
+  8271
+  -----
+  8CJA7          Average number of errors per game: 0.00
+
+
+Your try? c
+C=5
+Correct!
+
+
+
+
+    919          Number of errors (this game): 2
+   x 9D
+  -----
+   2757          Number of games: 0
+  8271
+  -----
+  85JA7          Average number of errors per game: 0.00
+
+
+Your try? a
+A=6
+Correct!
+
+
+
+
+    919          Number of errors (this game): 2
+   x 9D
+  -----
+   2757          Number of games: 0
+  8271
+  -----
+  85J67          Average number of errors per game: 0.00
+
+
+Your try? j
+J=4
+Correct!
+
+
+
+
+    919          Number of errors (this game): 2
+   x 9D
+  -----
+   2757          Number of games: 0
+  8271
+  -----
+  85467          Average number of errors per game: 0.00
+
+
+Your try? d
+D=3
+Correct!
+
+
+
+
+    919          Number of errors (this game): 2
+   x 93
+  -----
+   2757          Number of games: 0
+  8271
+  -----
+  85467          Average number of errors per game: 0.00
+
+
+Finished with 2 errors. Play again (Y/N): y
+
+
+
+
+    AEG          Number of errors (this game): 0
+   x BG
+  -----
+   CFGE          Number of games: 1
+  AJAC
+  -----
+  AEJDE          Average number of errors per game: 2.00
+
+
+Your try?
+
+
+.............................................................
+: Part 3. The homework steps: (the end of this part is new) :
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+Step 1
+Write a function that return a list. The list has two elements: a multiplicand and a multiplier. These must be randomly chosen from among ALL legal possiblities. You will accomplish this by using the random.randint() method,
+ which will require importing the random class. Your approach will be to try potentially valid multiplicand/multiplier pairs, until a legal puzzle results.
+
+Step 2
+Write a function to create a random cypher for numbers to letters. This must be done in a very specific (and simple) way:
+1. Create a string of the first 10 letters
+2. Create a variable that is a list of that string (ie, each element is a letter)
+3. Use random.shuffle  (Note: shuffle happens in place; it doesn't return the answer; you therefore need to do it on its own line.)
+4. Use  dict(enumerate(....)) to create a dictionary of that shuffle list. (As for "enumerate", we'll talk about it next week)
+
+Step 3
+write a function to print the puzzle. This involves 
+1. Using a formatted string (ie, defined with a %") to create an 18-character string of everything in the puzzle (3digitmultiplicand + 2digitmultiplier + 4digit1stpartialproduct + 4digit2ndpartialproduct + 5digitfinalanswer = 18 characters).
+2. Loop through the dictionary, doing a string replace of each number in the dictionary with its corresponding random letter. (Note: later entries will be removed from the dictionary. So you cannot assume that all 10 numbers are in it.)
+3. Print the puzzle. The first three positions of the 18-character string go on the first line. The next two positions go on the next line. The next four on the next. The next four on the next. And the last five on the last line. 
+4. As described in Part 2, above, your game also has to print the 3 statistics.
+   Note: The "average number of errors per game" statistic
+         must give exactly 2 decimal places (as shown in
+         part 2, above -- and as in the original game).
+   Note: when you start playing, there are not yet any 
+         completed games. So the calculation of "average
+         number of errors per game" is a divide-by-zero
+         error. However, as shown in Part 2, We don't
+         get a divide-by-zero error; we just print 0.00
+         You COULD do this with an if-else structure, but
+         I want you to instead use try/except ZeroDivisionError
+5. The function will return a boolean value.
+   That value is obtained by applying the isdigit method
+   to the formatted string discussed above.
+   The purpose is to return true in the case that the puzzle
+   has been fully solved.
+
+Step 4
+Write a function that makes one play move. It receives 2 arguments:
+the puzzle from step 1 and the cypher from step 2. The function then:
+1. Uses "input" to ask for and to capture the player's response.
+   Note: The query must be exactly this string: "Your try? "
+2. Capitalize the player's response
+3. Check to see if the player's response is one of the values in the
+   cypher dictionary that was passed into this function.
+4. If not, print "That is not a code value." and go to step 9.
+5. If it is in the cypher, however, then use input to get the player's
+   guess for the value of that letter.  
+   Note: The query must contain the letter they typed. For example,
+         if you tried "d", it would print "D=". As in:
+            Your try? d
+            D=
+6. If the guess is correct, print "Correct!" and remove that letter
+   from the cypher dictionary and go to step 9.
+7. If the guess is not a valid number, then print "that is not a
+   hidden value" and go to step 9 (without adding to the error count).
+   Note: "32" is not a valid number, "X" is not a valid number, and
+         "3" may not be a valid number -- if "3" has already been
+         solved.
+8. If the guess is incorrect, print "Incorrect." and add 1 to the
+   error count.
+9. Execute the exact command: sleep(2)
+   Note: This will make the computer pause for 2 seconds, like the
+         original game does.
+   Note: "sleep" is a method of the "time" module. So you will need
+         to get it from there. This means that you must have already
+         imported it (probably at the very top of your program).
+   Note: The exact command was "sleep(2)" not "time.sleep(2)"
+         so you'll need to use the "from" command with "import"
+
+Regarding step 4 as a whole, be aware that these 9 steps don't all
+implement in this order, and there is no "goto" command. Instead,
+statements like "go to step 9" just describe the expected behavior of
+the function, not your approach to implementing it.
+
+Step 5
+This is the code at the bottom of your program. It is not inside a function.
+1. while(1):
+   2. Call the function defined in Step 1
+   3. Call the function defined in Step 2
+   4. error = 0
+      Note: We do this because each new game starts with no errors.
+      Note: You'll also need to initialize the count of total errors
+            and total games (in order to get the averge number of
+            errors per game). But that would be done at the top of
+            the program, rather than here, because "here" is inside
+            of the while(1) loop.
+   5. while(1):
+      6. Call the function defined in Step 3. AND, if it returns a 
+         "True" then break
+      7. Call the function defined in Step 4.
+   8. Print "Finish with ... errors"
+   9. Add the errors to the total
+   10.Add 1 to the total number of games
+   11.Ask if the player wants to play again
+   12.If not, then break
