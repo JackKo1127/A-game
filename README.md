@@ -1,4 +1,5 @@
 # A-game
+
 import random
 import string
 from time import sleep
